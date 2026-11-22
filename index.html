@@ -1260,6 +1260,39 @@ img {
     }
 }
 
+
+
+/* CORRECCIÓN DE LA MASCOTA EN TELÉFONOS */
+@media (max-width: 760px) {
+    .mascota-hero {
+        display: block;
+        width: auto;
+        height: clamp(185px, 34vw, 230px);
+        max-width: 48%;
+        object-fit: contain;
+        object-position: bottom center;
+        right: 0;
+        bottom: 0;
+        z-index: 5;
+    }
+}
+
+@media (max-width: 480px) {
+    .mascota-hero {
+        height: 185px;
+        max-width: 50%;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+@media (max-width: 380px) {
+    .mascota-hero {
+        height: 165px;
+        max-width: 52%;
+    }
+}
+
 </style>
 </head>
 
