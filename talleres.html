@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Talleres | TEBAEV Hueyapan de Ocampo</title>
+
+<style>
+:root {
+    --vino: #64112f;
+    --rosa: #a7194b;
+    --dorado: #ffc928;
+    --fondo: #fffaf2;
+    --gris: #64748b;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--fondo);
+    color: #3d2632;
+}
+
+/* ENCABEZADO */
+header {
+    padding: 45px 20px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(
+        120deg, #4d1029, #64112f, #a7194b
+    );
+}
+
+header h1 {
+    margin: 0 0 12px;
+    font-size: clamp(32px, 5vw, 46px);
+}
+
+header p {
+    max-width: 750px;
+    margin: auto;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+/* CONTENEDOR */
+.contenedor {
+    max-width: 1250px;
+    margin: auto;
+    padding: 40px 22px;
+}
+
+/* PRESENTACIÓN */
+.introduccion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+}
+
+.introduccion h2 {
+    margin: 0;
+    padding: 13px 25px;
+    border-radius: 15px;
+    background: #f9e4ec;
+    color: var(--vino);
+    font-size: 30px;
+}
+
+.introduccion p {
+    max-width: 550px;
+    color: var(--gris);
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+/* TARJETAS */
+.talleres {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.taller {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 22px;
+    background: white;
+    border: 1px solid #ead5de;
+    border-left: 5px solid var(--rosa);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px #64112f12;
+    transition: transform .25s, box-shadow .25s;
+    overflow: hidden;
+}
+
+.taller:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px #64112f20;
+}
+
+/* IMÁGENES */
+.imagen-taller {
+    width: 43%;
+    min-width: 145px;
+    height: 190px;
+    object-fit: contain;
+    border-radius: 16px;
+    background: #fff1f5;
+    padding: 8px;
+}
+
+.taller:nth-child(even) .imagen-taller {
+    background: #fff4d6;
+}
+
+.informacion {
+    flex: 1;
+}
+
+.numero {
+    display: inline-block;
+    padding: 7px 13px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background: #f9e4ec;
+    color: var(--rosa);
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.taller h3 {
+    margin: 0 0 10px;
+    color: var(--vino);
+    font-size: 22px;
+}
+
+.taller p {
+    margin: 0;
+    color: var(--gris);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* QUINTO TALLER CENTRADO */
+.taller:last-child {
+    grid-column: 1 / -1;
+    width: 75%;
+    justify-self: center;
+}
+
+/* BOTÓN VOLVER */
+.volver {
+    display: block;
+    width: fit-content;
+    margin: 40px auto 0;
+    padding: 15px 30px;
+    border-radius: 30px;
+    background: var(--dorado);
+    color: var(--vino);
+    text-decoration: none;
+    font-weight: bold;
+    transition: .2s;
+}
+
+.volver:hover {
+    background: #f5b91c;
+    transform: translateY(-3px);
+}
+
+/* PIE DE PÁGINA */
+footer {
+    padding: 25px 15px;
+    background: #4d1029;
+    color: white;
+    text-align: center;
+    line-height: 1.8;
+    font-size: 13px;
+}
+
+/* TABLET */
+@media (max-width: 850px) {
+    .talleres {
+        grid-template-columns: 1fr;
+    }
+
+    .taller:last-child {
+        grid-column: auto;
+        width: 100%;
+    }
+}
+
+/* CELULAR */
+@media (max-width: 500px) {
+    .taller {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .imagen-taller {
+        width: 100%;
+        height: 190px;
+    }
+
+    .introduccion h2 {
+        font-size: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Nuestros talleres</h1>
+    <p>
+        Descubre nuevas habilidades, desarrolla tus talentos
+        y explora actividades prácticas que pueden ayudarte
+        en tu formación académica y personal.
+    </p>
+</header>
+
+<main class="contenedor">
+
+    <section class="introduccion">
+        <h2>Aprende algo nuevo</h2>
+        <p>
+            Los talleres son espacios de formación práctica
+            que te permiten desarrollar habilidades, reforzar
+            tus conocimientos y aplicar lo aprendido.
+        </p>
+    </section>
+
+    <section class="talleres">
+
+        <!-- TALLER 1 -->
+        <article class="taller">
+            <img class="imagen-taller"
+                 src="img/pasteleria.png"
+                 alt="Ilustración de pasteles y postres">
+
+            <div class="informacion">
+                <span class="numero">TALLER 01</span>
+                <h3>Pastelería y dulces finos</h3>
+                <p>
+                    Aprende técnicas de preparación y decoración
+                    de postres, pasteles y dulces, desarrollando
+                    creatividad y habilidades culinarias.
+                </p>
+            </div>
+        </article>
+
+        <!-- TALLER 2 -->
+        <article class="taller">
+            <img class="imagen-taller"
+                 src="img/informatica.png"
+                 alt="Ilustración de computadora y tecnología">
+
+            <div class="informacion">
+                <span class="numero">TALLER 02</span>
+                <h3>Informática</h3>
+                <p>
+                    Desarrolla habilidades en el uso de computadoras,
+                    programas digitales y herramientas tecnológicas
+                    para realizar diferentes actividades.
+                </p>
+            </div>
+        </article>
+
+        <!-- TALLER 3 -->
+        <article class="taller">
+            <img class="imagen-taller"
+                 src="img/electricidad.png"
+                 alt="Ilustración de herramientas eléctricas">
+
+            <div class="informacion">
+                <span class="numero">TALLER 03</span>
+                <h3>Electricidad</h3>
+                <p>
+                    Conoce los principios básicos de la electricidad,
+                    los circuitos y el funcionamiento de instalaciones
+                    y componentes eléctricos.
+                </p>
+            </div>
+        </article>
+
+        <!-- TALLER 4 -->
+        <article class="taller">
+            <img class="imagen-taller"
+                 src="img/electromecanica.png"
+                 alt="Ilustración de engranajes y mecanismos">
+
+            <div class="informacion">
+                <span class="numero">TALLER 04</span>
+                <h3>Electromecánica</h3>
+                <p>
+                    Explora el funcionamiento de máquinas,
+                    mecanismos y sistemas eléctricos, así como
+                    sus componentes y aplicaciones.
+                </p>
+            </div>
+        </article>
+
+        <!-- TALLER 5 -->
+        <article class="taller">
+            <img class="imagen-taller"
+                 src="img/corte-peinado.png"
+                 alt="Ilustración de tijeras y secadora para cabello">
+
+            <div class="informacion">
+                <span class="numero">TALLER 05</span>
+                <h3>Corte y peinado</h3>
+                <p>
+                    Aprende técnicas básicas de cuidado del cabello,
+                    cortes y peinados, fortaleciendo la creatividad
+                    y las habilidades de estilismo.
+                </p>
+            </div>
+        </article>
+
+    </section>
+
+    <a href="index.html" class="volver"
+       onclick="if (history.length > 1) {
+       history.back(); return false;
+       }">
+       ← Volver a la página principal
+    </a>
+
+</main>
+
+<footer>
+    <strong>TEBAEV HUEYAPAN DE OCAMPO</strong>
+    <br>
+    Sistema web de orientación vocacional
+    <br>
+    Explora tus intereses y construye tu futuro.
+</footer>
+
+</body>
+</html>

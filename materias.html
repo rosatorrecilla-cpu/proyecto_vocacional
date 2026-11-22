@@ -1,0 +1,1003 @@
+     <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Materias | TEBAEV Hueyapan de Ocampo</title>
+
+    <style>
+
+        @font-face {
+            font-family: 'SephoraHayden';
+            src: url('./fonts/sephora-hayden.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        :root {
+            --vino: #64112f;
+            --rosa: #a7194b;
+            --dorado: #ffc928;
+            --fondo: #fffaf2;
+            --gris: #64748b;
+            --rosa-claro: #f9e4ec;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--fondo);
+            color: #243047;
+        }
+
+        /* ENCABEZADO */
+
+        header {
+            background: linear-gradient(
+                120deg, #690d31, #8f1744, #b62c50
+            );
+            color: white;
+            text-align: center;
+            padding: 55px 20px;
+        }
+
+        header h1 {
+            font-family: 'SephoraHayden', cursive;
+            font-size: clamp(32px, 5vw, 48px);
+            margin: 0 0 15px;
+        }
+
+        header p {
+            max-width: 750px;
+            margin: auto;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+
+        .contenedor {
+            max-width: 1050px;
+            margin: auto;
+            padding: 50px 20px;
+        }
+
+        /* INTRODUCCIÓN */
+
+        .introduccion {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .introduccion h2 {
+            color: var(--vino);
+            font-size: 27px;
+            margin-bottom: 10px;
+        }
+
+        .introduccion p {
+            color: var(--gris);
+            line-height: 1.8;
+        }
+
+        .subtitulo {
+            display: inline-block;
+            background: var(--rosa-claro);
+            color: var(--vino);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* SEMESTRES EN UNA SOLA COLUMNA */
+
+        .semestres {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .semestre {
+            background: white;
+            border: 1px solid #f0dce3;
+            border-top: 5px solid var(--rosa);
+            border-radius: 17px;
+            box-shadow: 0 7px 22px rgba(100, 17, 47, 0.07);
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+
+        .semestre:hover {
+            box-shadow: 0 12px 28px rgba(100, 17, 47, 0.13);
+        }
+
+        /* BOTÓN DESPLEGABLE */
+
+        .semestre summary {
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 22px;
+            min-height: 95px;
+        }
+
+        .semestre summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .numero {
+            min-width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--rosa-claro);
+            color: var(--rosa);
+            border-radius: 12px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .titulo-semestre {
+            flex: 1;
+            color: var(--vino);
+            font-family: 'SephoraHayden', cursive;
+            font-size: 25px;
+        }
+
+        .flecha {
+            width: 35px;
+            height: 35px;
+            background: var(--vino);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .semestre[open] summary {
+            background: #fff6f8;
+            border-bottom: 1px solid #f0dce3;
+        }
+
+        .semestre[open] .flecha {
+            transform: rotate(180deg);
+        }
+
+        /* CONTENIDO DEL SEMESTRE */
+
+        .contenido-semestre {
+            padding: 25px;
+            animation: aparecer 0.35s ease;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* PRESENTACIÓN */
+
+        .presentacion-semestre {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 22px;
+            background: linear-gradient(
+                135deg, #fff0f5, #fffaf2
+            );
+            border-radius: 14px;
+        }
+
+        .imagen-semestre {
+            font-size: 48px;
+            margin-bottom: 8px;
+        }
+
+        .presentacion-semestre h3 {
+            color: var(--vino);
+            margin: 5px 0;
+            font-size: 21px;
+        }
+
+        .presentacion-semestre p {
+            color: var(--gris);
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 5px 0;
+        }
+
+        /* TARJETAS DE MATERIAS */
+
+        .lista-materias {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .materia {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px 13px;
+            background: #fffafd;
+            border: 1px solid #f0dce3;
+            border-radius: 12px;
+            transition: 0.3s;
+            min-height: 85px;
+        }
+
+        .materia:hover {
+            background: #fff0f5;
+            border-color: #dca5b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(100, 17, 47, 0.06);
+        }
+
+        .icono-materia {
+            min-width: 38px;
+            height: 38px;
+            background: var(--rosa-claro);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+
+        .nombre-materia {
+            color: #394052;
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .etiqueta {
+            display: inline-block;
+            color: var(--rosa);
+            font-size: 11px;
+            margin-top: 5px;
+            line-height: 1.5;
+        }
+
+        /* MENSAJE FINAL */
+
+        .mensaje-final {
+            margin: 45px auto 0;
+            padding: 35px 20px;
+            max-width: 950px;
+            text-align: center;
+            background: linear-gradient(
+                120deg, #64112f, #9c2450
+            );
+            color: white;
+            border-radius: 18px;
+        }
+
+        .mensaje-final h2 {
+            font-family: 'SephoraHayden', cursive;
+            font-size: 28px;
+            margin: 0 0 10px;
+        }
+
+        .mensaje-final p {
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* BOTÓN REGRESAR */
+
+        .volver {
+            display: block;
+            width: fit-content;
+            margin: 35px auto 0;
+            background: var(--dorado);
+            color: var(--vino);
+            padding: 15px 25px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .volver:hover {
+            background: #ffbd24;
+            transform: translateY(-3px);
+        }
+
+        /* PIE DE PÁGINA */
+
+        footer {
+            background: #4d1029;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            line-height: 1.8;
+        }
+
+        /* TABLET */
+
+        @media (max-width: 750px) {
+
+            .contenedor {
+                padding: 35px 15px;
+            }
+
+            .lista-materias {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .titulo-semestre {
+                font-size: 22px;
+            }
+
+        }
+
+        /* CELULAR */
+
+        @media (max-width: 450px) {
+
+            .lista-materias {
+                grid-template-columns: 1fr;
+            }
+
+            .semestre summary {
+                padding: 16px;
+                gap: 10px;
+            }
+
+            .titulo-semestre {
+                font-size: 20px;
+            }
+
+            .numero {
+                min-width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+
+            .contenido-semestre {
+                padding: 16px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+
+    <header>
+
+        <h1>Nuestras materias</h1>
+
+        <p>
+            Conoce las asignaturas que forman parte de tu preparación
+            académica en el TEBAEV Hueyapan de Ocampo.
+            Explora cada semestre y descubre todo lo que puedes aprender.
+        </p>
+
+    </header>
+
+    <main class="contenedor">
+
+        <!-- INTRODUCCIÓN -->
+
+        <section class="introduccion">
+
+            <h2>Tu camino académico</h2>
+
+            <p>
+                A lo largo de seis semestres desarrollarás conocimientos,
+                habilidades y competencias que contribuirán a tu formación
+                personal y académica.
+            </p>
+
+            <span class="subtitulo">
+                Selecciona un semestre para conocer sus materias
+            </span>
+
+        </section>
+
+        <!-- SEMESTRES -->
+
+        <section class="semestres">
+
+            <!-- PRIMER SEMESTRE -->
+
+            <details class="semestre">
+
+                <summary>
+                    <span class="numero">01</span>
+                    <span class="titulo-semestre">Primer semestre</span>
+                    <span class="flecha">⌄</span>
+                </summary>
+
+                <div class="contenido-semestre">
+
+                    <div class="presentacion-semestre">
+                        <div class="imagen-semestre">📚</div>
+
+                        <h3>Primer semestre</h3>
+
+                        <p>
+                            Comienza tu formación académica y desarrolla
+                            las bases de nuevos conocimientos.
+                        </p>
+                    </div>
+
+                    <div class="lista-materias">
+
+                        <div class="materia">
+                            <span class="icono-materia">📖</span>
+                            <div>
+                                <div class="nombre-materia">
+                                    Lengua y Comunicación I
+                                </div>
+                                <span class="etiqueta">
+                                    Leer y escribir para pensarnos juntos
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🔢</span>
+                            <div>
+                                <div class="nombre-materia">
+                                    Pensamiento Matemático I
+                                </div>
+                                <span class="etiqueta">
+                                    Pensamiento aritmético
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🔬</span>
+                            <div>
+                                <div class="nombre-materia">
+                                    Ciencias Naturales, Experimentales y Tecnología
+                                </div>
+                                <span class="etiqueta">
+                                    Invitación a la ciencia y naturaleza de la materia
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🌎</span>
+                            <div>
+                                <div class="nombre-materia">
+                                    Ciencias Sociales I
+                                </div>
+                                <span class="etiqueta">
+                                    Estado, ciudadanía y relaciones de poder
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🔎</span>
+                            <div class="nombre-materia">
+                                Laboratorio de Investigación
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">💭</span>
+                            <div>
+                                <div class="nombre-materia">
+                                    Pensamiento Filosófico y Humanidades
+                                </div>
+                                <span class="etiqueta">
+                                    El ejercicio de filosofar y la perspectiva humanista
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">💻</span>
+                            <div class="nombre-materia">
+                                Cultura Digital
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🇬🇧</span>
+                            <div class="nombre-materia">
+                                Inglés
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">💗</span>
+                            <div class="nombre-materia">
+                                Formación Socioemocional
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </details>
+
+            <!-- SEGUNDO SEMESTRE -->
+
+            <details class="semestre">
+
+                <summary>
+                    <span class="numero">02</span>
+                    <span class="titulo-semestre">Segundo semestre</span>
+                    <span class="flecha">⌄</span>
+                </summary>
+
+                <div class="contenido-semestre">
+
+                    <div class="presentacion-semestre">
+                        <div class="imagen-semestre">⚡</div>
+
+                        <h3>Segundo semestre</h3>
+
+                        <p>
+                            Fortalece tus conocimientos y descubre nuevas
+                            formas de comprender el mundo.
+                        </p>
+                    </div>
+
+                    <div class="lista-materias">
+
+                        <div class="materia">
+                            <span class="icono-materia">⚡</span>
+                            <div class="nombre-materia">
+                                Conservación de la Energía y sus Interacciones con la Materia
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🌍</span>
+                            <div class="nombre-materia">
+                                Ciencias Sociales II
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">💻</span>
+                            <div class="nombre-materia">
+                                Cultura Digital II
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🧮</span>
+                            <div class="nombre-materia">
+                                Pensamiento Matemático II
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">📚</span>
+                            <div class="nombre-materia">
+                                Lengua y Comunicación II
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🇬🇧</span>
+                            <div class="nombre-materia">
+                                Inglés II
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🧠</span>
+                            <div class="nombre-materia">
+                                Humanidades II
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🔬</span>
+                            <div class="nombre-materia">
+                                Taller de Ciencias I
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </details>
+
+            <!-- TERCER SEMESTRE -->
+
+            <details class="semestre">
+
+                <summary>
+                    <span class="numero">03</span>
+                    <span class="titulo-semestre">Tercer semestre</span>
+                    <span class="flecha">⌄</span>
+                </summary>
+
+                <div class="contenido-semestre">
+
+                    <div class="presentacion-semestre">
+                        <div class="imagen-semestre">🌱</div>
+
+                        <h3>Tercer semestre</h3>
+
+                        <p>
+                            Explora los procesos de la naturaleza y amplía
+                            tus conocimientos sobre la vida y la salud.
+                        </p>
+                    </div>
+
+                    <div class="lista-materias">
+
+                        <div class="materia">
+                            <span class="icono-materia">🌳</span>
+                            <div class="nombre-materia">
+                                Ecosistema: Interacciones, Energía y Dinámica
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">📐</span>
+                            <div class="nombre-materia">
+                                Pensamiento Matemático III
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🇬🇧</span>
+                            <div class="nombre-materia">
+                                Inglés III
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">💭</span>
+                            <div class="nombre-materia">
+                                Humanidades III
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🔬</span>
+                            <div class="nombre-materia">
+                                Taller de Ciencias II
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🦠</span>
+                            <div class="nombre-materia">
+                                Epidemiología
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🩺</span>
+                            <div class="nombre-materia">
+                                Bases Anatómicas y Filosóficas y el Proceso Salud-Enfermedad
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </details>
+
+            <!-- CUARTO SEMESTRE -->
+
+            <details class="semestre">
+
+                <summary>
+                    <span class="numero">04</span>
+                    <span class="titulo-semestre">Cuarto semestre</span>
+                    <span class="flecha">⌄</span>
+                </summary>
+
+                <div class="contenido-semestre">
+
+                    <div class="presentacion-semestre">
+                        <div class="imagen-semestre">⚗️</div>
+
+                        <h3>Cuarto semestre</h3>
+
+                        <p>
+                            Desarrolla tu pensamiento científico,
+                            histórico y social mediante nuevas experiencias.
+                        </p>
+                    </div>
+
+                    <div class="lista-materias">
+
+                        <div class="materia">
+                            <span class="icono-materia">🧪</span>
+                            <div class="nombre-materia">
+                                Reacciones Químicas: Conservación de la Materia en la Formación de Nuevas Sustancias
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🏛️</span>
+                            <div class="nombre-materia">
+                                Conciencia Histórica I: Perspectivas del México Antiguo y los Contextos Globales
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">💻</span>
+                            <div class="nombre-materia">
+                                Taller de Cultura Digital
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">📐</span>
+                            <div class="nombre-materia">
+                                Temas Selectos de Matemáticas I
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">📖</span>
+                            <div class="nombre-materia">
+                                Pensamiento Literario
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🇬🇧</span>
+                            <div class="nombre-materia">
+                                Inglés IV
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🌎</span>
+                            <div class="nombre-materia">
+                                Espacio y Sociedad
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">👥</span>
+                            <div class="nombre-materia">
+                                Ciencias Sociales III
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🥗</span>
+                            <div class="nombre-materia">
+                                Nutrición
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🏥</span>
+                            <div class="nombre-materia">
+                                Salud Pública
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </details>
+
+            <!-- QUINTO SEMESTRE -->
+
+            <details class="semestre">
+
+                <summary>
+                    <span class="numero">05</span>
+                    <span class="titulo-semestre">Quinto semestre</span>
+                    <span class="flecha">⌄</span>
+                </summary>
+
+                <div class="contenido-semestre">
+
+                    <div class="presentacion-semestre">
+                        <div class="imagen-semestre">🩺</div>
+
+                        <h3>Quinto semestre</h3>
+
+                        <p>
+                            Fortalece tus conocimientos sobre la salud,
+                            el cuidado y los procesos de la vida cotidiana.
+                        </p>
+                    </div>
+
+                    <div class="lista-materias">
+
+                        <div class="materia">
+                            <span class="icono-materia">⚡</span>
+                            <div class="nombre-materia">
+                                La Energía en los Procesos de la Vida Diaria
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">📜</span>
+                            <div class="nombre-materia">
+                                Conciencia Histórica II: México durante el Expansionismo Capitalista
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🩺</span>
+                            <div class="nombre-materia">
+                                Técnicas Clínicas I
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">💗</span>
+                            <div class="nombre-materia">
+                                Salud Sexual y Reproductiva
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </details>
+
+            <!-- SEXTO SEMESTRE -->
+
+            <details class="semestre">
+
+                <summary>
+                    <span class="numero">06</span>
+                    <span class="titulo-semestre">Sexto semestre</span>
+                    <span class="flecha">⌄</span>
+                </summary>
+
+                <div class="contenido-semestre">
+
+                    <div class="presentacion-semestre">
+                        <div class="imagen-semestre">🎓</div>
+
+                        <h3>Sexto semestre</h3>
+
+                        <p>
+                            Integra los conocimientos adquiridos y prepárate
+                            para alcanzar nuevas metas académicas y personales.
+                        </p>
+                    </div>
+
+                    <div class="lista-materias">
+
+                        <div class="materia">
+                            <span class="icono-materia">🧬</span>
+                            <div class="nombre-materia">
+                                Organismo: Estructura y Proceso, Herencia y Evolución Biológica
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🏛️</span>
+                            <div class="nombre-materia">
+                                Conciencia Histórica III
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">📐</span>
+                            <div class="nombre-materia">
+                                Temas Selectos de Matemáticas II
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">👵</span>
+                            <div class="nombre-materia">
+                                Cuidado del Paciente Geriátrico
+                            </div>
+                        </div>
+
+                        <div class="materia">
+                            <span class="icono-materia">🩺</span>
+                            <div class="nombre-materia">
+                                Técnicas Clínicas
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </details>
+
+        </section>
+
+        <!-- MENSAJE FINAL -->
+
+        <section class="mensaje-final">
+
+            <h2>Construye tu futuro</h2>
+
+            <p>
+                Cada semestre representa una nueva oportunidad para aprender,
+                descubrir tus habilidades y avanzar hacia tus metas.
+            </p>
+
+        </section>
+
+        <!-- BOTÓN REGRESAR -->
+
+        <a href="index.html"
+           class="volver"
+           onclick="if (history.length > 1) {
+               history.back();
+               return false;
+           }">
+
+            ← Volver a la página principal
+
+        </a>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+
+    <footer>
+
+        <strong>TEBAEV HUEYAPAN DE OCAMPO</strong>
+
+        <br>
+
+        Sistema web de orientación vocacional
+
+        <br>
+
+        Explora tus intereses y construye tu futuro.
+
+    </footer>
+
+    <!-- FUNCIONALIDAD: SOLO UN SEMESTRE ABIERTO -->
+
+    <script>
+
+        const semestres = document.querySelectorAll('.semestre');
+
+        semestres.forEach((semestre) => {
+
+            semestre.addEventListener('toggle', () => {
+
+                if (semestre.open) {
+
+                    semestres.forEach((otroSemestre) => {
+
+                        if (otroSemestre !== semestre) {
+                            otroSemestre.open = false;
+                        }
+
+                    });
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>

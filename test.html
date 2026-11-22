@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Vocacional | TEBAEV</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@600;700;800&display=swap');
+:root{--vino:#751b42;--vino2:#a32a5c;--rosa:#d98aaa;--dorado:#f2c94c;--tinta:#42152c;--suave:#806477;--borde:#efd9e3}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Nunito,Arial,sans-serif;color:var(--tinta);background:radial-gradient(circle at 8% 8%,#f2c94c30,transparent 22%),radial-gradient(circle at 95% 20%,#d98aaa40,transparent 25%),linear-gradient(135deg,#fff8fa,#fff0f5 55%,#fffaf5)}
+button{font:inherit;cursor:pointer}.contenedor{width:min(960px,calc(100% - 24px));margin:30px auto}.caja{position:relative;overflow:hidden;background:#ffffffed;border:1px solid white;border-radius:28px;padding:clamp(20px,5vw,46px);box-shadow:0 18px 50px #5b193a1c}.contenido{position:relative;z-index:1}
+.marca{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:18px;color:var(--vino);font-size:12px;font-weight:900;letter-spacing:2px}.marca b{display:grid;place-items:center;width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,var(--vino),var(--rosa));color:white;font-size:22px}
+h1,h2,h3{font-family:Poppins,Nunito,sans-serif}h1{text-align:center;color:var(--vino);font-size:clamp(30px,5vw,45px);line-height:1.15;margin:8px 0 12px}h1 em{font-style:normal;color:#bd668e}.subtitulo{text-align:center;color:var(--suave);font-weight:700;line-height:1.6}
+.hero{margin:25px auto 20px;max-width:650px;min-height:155px;border-radius:24px;padding:22px;display:flex;align-items:center;justify-content:center;gap:24px;color:white;background:linear-gradient(115deg,#751b42,#a83b69 60%,#d98aaa);text-align:left}.hero .ico{font-size:clamp(42px,8vw,66px);filter:drop-shadow(0 5px 5px #42152c55)}.hero strong{font:700 clamp(17px,3vw,23px) Poppins;display:block}.hero small{display:block;margin-top:7px;color:#ffeaf1;font-size:14px}
+.etiquetas{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin:20px 0}.etiqueta{padding:8px 13px;border-radius:25px;background:#fff4d5;color:#755515;font-size:12px;font-weight:900}.etiqueta:nth-child(2){background:#fce8f0;color:var(--vino)}.etiqueta:nth-child(3){background:#eee9ff;color:#59428d}
+.intro{max-width:700px;margin:0 auto 22px;text-align:center;line-height:1.8;color:#6e5968}.principal,.secundario{border:0;border-radius:14px;padding:14px 22px;font-weight:900;transition:.2s}.principal{display:block;margin:0 auto;background:linear-gradient(100deg,var(--vino),var(--vino2));color:white;box-shadow:0 9px 20px #751b4230}.secundario{background:#fff0f5;color:var(--vino);border:1px solid var(--borde)}.principal:hover,.secundario:hover{transform:translateY(-2px);box-shadow:0 10px 20px #751b4225}.pie{text-align:center;color:#987d8e;font-size:12px;margin-top:17px}
+.cabecera{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}#numero{font-weight:900;color:var(--vino);background:#fff0f5;border-radius:30px;padding:8px 13px;font-size:13px}#categoria{font-size:12px;color:#98758a;font-weight:900;letter-spacing:1px;text-transform:uppercase}.progreso{height:11px;background:#f5e4eb;border-radius:30px;margin:17px 0 26px;overflow:hidden}#barra{height:100%;width:0;background:linear-gradient(90deg,var(--vino),var(--rosa),var(--dorado));transition:.3s}
+.pregunta-ico{width:54px;height:54px;display:grid;place-items:center;border-radius:17px;background:linear-gradient(135deg,#fff0f5,#fff8df);font-size:27px;margin-bottom:12px}#pregunta{font-size:clamp(20px,3.5vw,27px);line-height:1.35;margin:0 0 20px}
+#opciones{display:grid;gap:11px}.opcion{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:14px 16px;border:2px solid var(--borde);border-radius:16px;background:white;color:var(--tinta);font-size:15px;font-weight:800;line-height:1.45;transition:.2s}.opcion:hover{border-color:#ce83a2;background:#fff9fb;transform:translateY(-1px)}.opcion.seleccionada{border-color:var(--vino);background:#fff0f5;box-shadow:0 5px 16px #751b4212}.letra{flex:0 0 34px;width:34px;height:34px;display:grid;place-items:center;border-radius:11px;background:#f8e8ef;color:var(--vino);font-weight:900}.seleccionada .letra{background:var(--vino);color:white}.check{margin-left:auto;color:var(--vino);opacity:0}.seleccionada .check{opacity:1}
+.botones{display:flex;justify-content:space-between;gap:12px;margin-top:25px}.botones button{min-width:125px}#anterior{background:#f6e8ee;color:var(--vino)}#siguiente{background:linear-gradient(100deg,var(--vino),var(--vino2));color:white}button:disabled{opacity:.4;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+#resultado{display:none}.resultado-hero{text-align:center;padding:22px;border-radius:22px;background:linear-gradient(120deg,#751b42,#a83b69 65%,#d98aaa);color:white;margin-bottom:18px}.resultado-hero .emoji{font-size:46px}.resultado-hero h1{color:white;margin:6px}.resultado-hero p{color:#ffeaf1;margin:0}.resultado-card{background:#fffafd;border:1px solid #f0dce5;padding:20px;border-radius:19px;margin:13px 0;box-shadow:0 6px 20px #64112f0b}.resultado-card h3{color:var(--vino);margin:0 0 10px;font-size:17px}.resultado-card h2{color:var(--vino2);margin:5px 0;font-size:23px}.resultado-card p{color:#6e5968;line-height:1.7}.lista{padding-left:22px;line-height:1.9;color:#60495a}.lista li::marker{color:#bd668e}.pastilla{display:inline-block;padding:7px 11px;border-radius:25px;background:#fff0f5;color:var(--vino);font-size:12px;font-weight:900}.grafica{display:grid;gap:10px}.fila{display:grid;grid-template-columns:minmax(125px,1fr) 2fr 25px;gap:9px;align-items:center;font-size:12px;font-weight:800;color:#6e5968}.fondo{height:10px;background:#f3e4eb;border-radius:20px;overflow:hidden}.relleno{height:100%;background:linear-gradient(90deg,var(--vino),var(--rosa));border-radius:20px}.nota{text-align:center;color:#8d7787;font-size:12px;line-height:1.6;margin:20px auto}.acciones{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+@media(max-width:600px){.contenedor{margin:12px auto}.caja{padding:20px 15px;border-radius:22px}.hero{gap:12px;padding:17px}.opcion{font-size:14px;padding:12px 10px}.botones button{min-width:0;flex:1;padding:12px 8px}.fila{grid-template-columns:110px 1fr 22px}}
+</style>
+</head>
+<body><div class="contenedor"><div class="caja"><div class="contenido">
+<section id="inicio">
+<div class="marca"><b>✦</b> TEBAEV · ORIENTACIÓN VOCACIONAL</div>
+<h1>Descubre tu <em>vocación</em></h1><p class="subtitulo">Conoce tus talentos, reconoce tus intereses y comienza a imaginar tu futuro.</p>
+<div class="hero"><span class="ico">🎓</span><div><strong>Tu futuro tiene muchas posibilidades</strong><small>Una elección informada comienza por conocerte a ti mismo.</small></div><span class="ico">🌟</span></div>
+<div class="etiquetas"><span class="etiqueta">🧠 30 preguntas</span><span class="etiqueta">🧭 4 áreas propedéuticas</span><span class="etiqueta">✨ 5 talleres</span></div>
+<p class="intro">Contesta pensando en tus gustos, intereses, habilidades y actividades favoritas. Al terminar recibirás una orientación sobre el área propedéutica que más coincide contigo, un taller que podrías disfrutar y las materias de tu bachillerato a las que conviene prestar atención.</p>
+<button class="principal" onclick="comenzar()">Comenzar mi test →</button><p class="pie">TEBAEV Hueyapan de Ocampo, Veracruz · No hay respuestas buenas o malas.</p>
+</section>
+<section id="test" style="display:none">
+<div class="cabecera"><span id="numero"></span><span id="categoria"></span></div><div class="progreso"><div id="barra"></div></div>
+<div class="pregunta-ico" id="iconoPregunta">💡</div><h2 id="pregunta"></h2><div id="opciones"></div>
+<div class="botones"><button class="secundario" id="anterior" onclick="regresar()">← Anterior</button><button id="siguiente" class="principal" onclick="avanzar()" disabled>Siguiente →</button></div>
+</section>
+<section id="resultado">
+<div class="resultado-hero"><div class="emoji">🏆</div><h1>¡Tu perfil vocacional!</h1><p>Estas son las opciones que más coinciden con tus respuestas.</p></div>
+<div class="resultado-card"><h3>🧭 Área propedéutica recomendada</h3><h2 id="area"></h2><p id="explicacionArea"></p><span class="pastilla" id="porcentajeArea"></span></div>
+<div class="resultado-card"><h3>🌱 Otra área que también podría interesarte</h3><h2 id="segundaArea"></h2><p id="explicacionSegunda"></p></div>
+<div class="resultado-card"><h3>🛠️ Taller que más coincide contigo</h3><h2 id="taller"></h2><p id="explicacionTaller"></p><span class="pastilla" id="porcentajeTaller"></span></div>
+<div class="resultado-card"><h3>📚 Materias en las que conviene poner mayor atención</h3><p>Estas asignaturas de tu plan de estudios pueden ayudarte a fortalecer habilidades relacionadas con el área sugerida:</p><ul id="materias" class="lista"></ul></div>
+<div class="resultado-card"><h3>📊 Así se distribuyeron tus intereses</h3><div id="graficaAreas" class="grafica"></div></div>
+<div class="resultado-card"><h3>💬 Recomendación para tu futuro académico</h3><p id="consejo"></p></div>
+<p class="nota">Este test es una herramienta de orientación y autoconocimiento. No determina de manera definitiva tu futuro ni sustituye la orientación de docentes y orientadores. Explora las opciones y considera tus metas y oportunidades.</p>
+<div class="acciones"><button class="principal" onclick="reiniciar()">↻ Volver a realizar el test</button><button class="secundario" onclick="window.print()">🖨️ Imprimir resultados</button></div>
+</section>
+</div></div></div>
+<script>
+const areas=["Físico matemático","Químico - Biológico","Económico - Administrativo","Humanidades y ciencias sociales"];
+const talleres=["Pastelería y dulces finas","Informática","Electricidad","Electromecánica","Corte y peinado"];
+// Cada respuesta suma un punto al área y al taller que se relacionan con ella.
+const preguntas=[
+["¿Qué actividad disfrutas más realizar?","Intereses","💡",[["Resolver problemas y cálculos.",0,1],["Conocer el cuerpo humano y la naturaleza.",1,0],["Organizar proyectos y administrar recursos.",2,1],["Leer, escribir y expresar mis ideas.",3,4]]],
+["¿Qué tema te llama más la atención?","Intereses","🔎",[["Las matemáticas y la tecnología.",0,2],["La salud, los seres vivos y la ciencia.",1,0],["Los negocios y la organización.",2,1],["La historia y la sociedad.",3,4]]],
+["Si realizaras un proyecto escolar, ¿cuál elegirías?","Proyectos","🚀",[["Construir un aparato o circuito.",0,3],["Investigar una enfermedad o el medio ambiente.",1,0],["Crear un pequeño negocio.",2,0],["Realizar una investigación social.",3,4]]],
+["¿Qué habilidad consideras que tienes más desarrollada?","Habilidades","⭐",[["Analizar y resolver problemas.",0,1],["Observar y cuidar a los demás.",1,0],["Planear y organizar actividades.",2,1],["Comunicarme y comprender a las personas.",3,4]]],
+["¿Qué actividad te gustaría aprender en un taller?","Talleres","🧰",[["Trabajar con instalaciones eléctricas.",0,2],["Preparar postres y decoraciones.",2,0],["Utilizar programas y herramientas digitales.",0,1],["Aprender técnicas de imagen personal.",3,4]]],
+["¿Qué materia te gustaría comprender mejor?","Aprendizaje","📚",[["Pensamiento matemático.",0,1],["Ciencias naturales y experimentales.",1,0],["Ciencias sociales.",2,1],["Lengua y comunicación.",3,4]]],
+["¿Cómo prefieres resolver una dificultad?","Habilidades","🧩",[["Con cálculos y razonamiento lógico.",0,1],["Investigando y observando.",1,0],["Organizando los recursos disponibles.",2,1],["Dialogando y buscando diferentes puntos de vista.",3,4]]],
+["¿Qué tipo de actividad te hace sentir satisfecho?","Preferencias","🙌",[["Armar, reparar o diseñar algo.",0,3],["Ayudar a alguien a mejorar su bienestar.",1,0],["Lograr que un proyecto funcione.",2,1],["Explicar un tema o apoyar a otras personas.",3,4]]],
+["¿Qué te gustaría investigar?","Curiosidad","🔬",[["El funcionamiento de máquinas y sistemas.",0,3],["La nutrición y la salud.",1,0],["La economía y los negocios.",2,1],["La cultura y los cambios sociales.",3,4]]],
+["¿En qué ambiente te gustaría trabajar?","Futuro profesional","🏢",[["En un espacio técnico o de ingeniería.",0,3],["En un laboratorio o área de salud.",1,0],["En una oficina o empresa.",2,1],["En un espacio educativo o social.",3,4]]],
+["¿Qué proyecto te gustaría desarrollar?","Proyectos","📝",[["Diseñar una solución tecnológica.",0,2],["Crear una propuesta para mejorar la salud.",1,0],["Emprender y administrar un negocio.",2,0],["Organizar una campaña social.",3,4]]],
+["¿Qué actividad prefieres hacer con tus manos?","Habilidades prácticas","👐",[["Instalar o reparar componentes.",0,2],["Preparar alimentos y postres.",2,0],["Trabajar con computadoras.",0,1],["Realizar peinados y cambios de imagen.",3,4]]],
+["¿Qué tema te gustaría aprender con mayor profundidad?","Aprendizaje","🌎",[["Energía, números y fenómenos físicos.",0,2],["Organismo, herencia y evolución biológica.",1,0],["Administración y organización de recursos.",2,1],["Pensamiento filosófico e historia.",3,4]]],
+["¿Qué tipo de problema te gustaría solucionar?","Retos","🎯",[["Una falla en un sistema eléctrico.",0,2],["Una situación relacionada con la salud.",1,0],["La falta de organización de un negocio.",2,1],["Un problema de convivencia social.",3,4]]],
+["¿Qué actividad realizarías durante tu tiempo libre?","Tiempo libre","🎨",[["Armar objetos o experimentar con tecnología.",0,3],["Investigar sobre salud, animales o plantas.",1,0],["Crear ideas para vender productos.",2,0],["Leer, escribir o realizar actividades creativas.",3,4]]],
+["¿Qué te gustaría conseguir en el futuro?","Metas","🌟",[["Crear o desarrollar soluciones técnicas.",0,3],["Contribuir al cuidado de la salud.",1,0],["Dirigir un negocio o proyecto.",2,1],["Ayudar a mejorar la sociedad.",3,4]]],
+["¿Qué tipo de aprendizaje prefieres?","Aprendizaje","🧠",[["Ejercicios, cálculos y experimentos.",0,2],["Prácticas de laboratorio y observación.",1,0],["Proyectos, organización y planificación.",2,1],["Lecturas, debates e investigaciones.",3,4]]],
+["¿Cuál de estas actividades te parece más interesante?","Curiosidad","⚡",[["Conocer cómo funciona la electricidad.",0,2],["Comprender cómo funciona el cuerpo humano.",1,0],["Aprender a manejar recursos y proyectos.",2,1],["Analizar cómo se desarrolla una comunidad.",3,4]]],
+["¿Qué taller elegirías para desarrollar una habilidad?","Talleres","🛠️",[["Electricidad.",0,2],["Pastelería y dulces finas.",2,0],["Informática.",0,1],["Corte y peinado.",3,4]]],
+["¿Cuál de estas frases te representa mejor?","Personalidad","💬",[["Me gusta descubrir cómo funcionan las cosas.",0,3],["Me interesa cuidar y comprender la vida.",1,0],["Me gusta organizar, planear y emprender.",2,1],["Me interesa comprender y apoyar a las personas.",3,4]]],
+["Cuando trabajas en equipo, ¿qué papel prefieres tomar?","Trabajo en equipo","🤝",[["Resolver la parte técnica del proyecto.",0,3],["Investigar información científica.",1,0],["Organizar tareas y tiempos.",2,1],["Coordinar ideas y escuchar a todos.",3,4]]],
+["¿Qué tipo de contenido buscarías por iniciativa propia?","Intereses","📱",[["Experimentos, tecnología o construcción.",0,1],["Salud, naturaleza y funcionamiento del cuerpo.",1,0],["Emprendimiento, ventas y finanzas.",2,1],["Historia, cultura y temas sociales.",3,4]]],
+["En una feria escolar, ¿qué te gustaría presentar?","Proyectos","🎪",[["Un modelo matemático o tecnológico.",0,3],["Un experimento sobre seres vivos o salud.",1,0],["Un producto con un plan de venta.",2,0],["Una exposición sobre una problemática social.",3,4]]],
+["¿Qué logro te produciría mayor satisfacción?","Metas","🏅",[["Crear una máquina, programa o instalación útil.",0,3],["Aportar al bienestar de las personas o seres vivos.",1,0],["Hacer crecer un emprendimiento.",2,1],["Promover la participación y el respeto en mi comunidad.",3,4]]],
+["¿Qué herramienta te gustaría aprender a utilizar mejor?","Habilidades prácticas","🔧",[["Instrumentos de medición y herramientas técnicas.",0,2],["Material de laboratorio y equipo de salud.",1,0],["Hojas de cálculo y herramientas de organización.",2,1],["Recursos para comunicar y presentar ideas.",3,4]]],
+["¿Qué situación te despierta más curiosidad?","Curiosidad","❓",[["Por qué funcionan las máquinas y los fenómenos físicos.",0,3],["Cómo se producen las enfermedades y cómo prevenirlas.",1,0],["Cómo se toman decisiones en una empresa.",2,1],["Cómo influyen la cultura y la historia en la sociedad.",3,4]]],
+["Si pudieras mejorar algo de tu comunidad, ¿qué elegirías?","Comunidad","🏘️",[["Crear una solución tecnológica para un problema cotidiano.",0,3],["Promover hábitos de salud y cuidado ambiental.",1,0],["Apoyar comercios y proyectos productivos locales.",2,0],["Impulsar actividades culturales y de convivencia.",3,4]]],
+["¿Qué actividad práctica te gustaría realizar con más frecuencia?","Preferencias","🧪",[["Resolver retos de lógica, diseño o electricidad.",0,2],["Observar, experimentar y aprender sobre salud.",1,0],["Planear presupuestos y organizar actividades.",2,1],["Debatir, investigar y presentar propuestas.",3,4]]],
+["¿Qué característica valoras más en una futura profesión?","Futuro profesional","💼",[["Analizar y crear soluciones técnicas.",0,3],["Contribuir al cuidado de la vida.",1,0],["Emprender y administrar proyectos.",2,1],["Comunicar, orientar o trabajar con personas.",3,4]]],
+["Al elegir tus estudios, ¿qué te gustaría que estuviera más presente?","Decisión académica","🧭",[["Matemáticas, tecnología y resolución de problemas.",0,2],["Ciencias, organismos y temas de salud.",1,0],["Organización, recursos y proyectos.",2,1],["Lectura, pensamiento crítico y sociedad.",3,4]]]
+];
+const explicaciones=[
+"Tu interés por los cálculos, la lógica, la tecnología y la solución de problemas puede relacionarse con esta área.",
+"Tu curiosidad por la ciencia, los seres vivos, el cuerpo humano y el cuidado de la salud puede relacionarse con esta área.",
+"Tu interés por organizar, planear, administrar recursos y desarrollar proyectos puede relacionarse con esta área.",
+"Tu gusto por comunicarte, investigar, reflexionar y comprender a las personas y la sociedad puede relacionarse con esta área."
+];
+const explicacionesTaller=[
+"Puede favorecer tu creatividad, precisión y elaboración de productos.",
+"Puede ayudarte a desarrollar habilidades digitales, pensamiento lógico y manejo de herramientas informáticas.",
+"Puede favorecer tu interés por instalaciones, circuitos, conexiones y sistemas eléctricos.",
+"Puede ayudarte a desarrollar habilidades para trabajar con mecanismos, equipos y componentes.",
+"Puede favorecer tu creatividad, destreza manual y habilidades de cuidado e imagen personal."
+];
+const materiasPorArea=[
+["Pensamiento matemático | pensamiento aritmético","Pensamiento matemático II","Pensamiento matemático III","Temas selectos de matemáticas I","Temas selectos de matemáticas II","Conservación de la energía y sus interacciones con la materia","Reacciones químicas: conservación de la materia en la formación de nuevas sustancia"],
+["Ciencia naturales, experimentales y tecnología | invitación a la ciencia naturaleza de la materia","Conservación de la energía y sus interacciones con la materia","Ecosistema: interacciones, energía y dinámica","Taller de ciencias I","Taller de ciencia II","Epidemiología","Base anatómicas y filosóficas y el proceso salud - enfermedad","Reacciones químicas: conservación de la materia en la formación de nuevas sustancia","Nutrición","Salud pública","Técnicas clínicas I","Salud, sexual y reproductiva","Organismo: estructura y proceso, herencia y evolución biológica","Cuidado del paciente geriátrico","Técnicas clínicas"],
+["Pensamiento matemático | pensamiento aritmético","Pensamiento matemático II","Pensamiento matemático III","Cultura digital","Cultura digital II","Taller de cultura digital","Laboratorio de investigación","Ciencias sociales II","Ciencias sociales III","Espacio y sociedad"],
+["Lengua y comunicación | leer y escribir para pensarnos juntos","Lengua y comunicación II","Pensamiento filosófico y humanidades | el ejercicio de filosofar y la perspectiva humanista","Humanidades II","Humanidades III","Ciencias sociales | estado ciudadanía y relaciones de poder","Ciencias sociales II","Ciencias sociales III","Conciencia histórica I. Perspectivas del México antiguo. Los contextos globales","Conciencia histórica II. México durante el expansionismo capitalista","Conciencia histórica III","Pensamiento literario","Espacio y sociedad"]
+];
+const talleresExp=explicacionesTaller;
+let actual=0,respuestas=Array(preguntas.length).fill(null);
+function comenzar(){document.getElementById("inicio").style.display="none";document.getElementById("resultado").style.display="none";document.getElementById("test").style.display="block";actual=0;mostrarPregunta();window.scrollTo({top:0,behavior:"smooth"});}
+function mostrarPregunta(){
+ const q=preguntas[actual];document.getElementById("numero").textContent=`Pregunta ${actual+1} de ${preguntas.length}`;document.getElementById("categoria").textContent=q[1];document.getElementById("iconoPregunta").textContent=q[2];document.getElementById("barra").style.width=((actual+1)/preguntas.length*100)+"%";document.getElementById("pregunta").textContent=q[0];
+ const zona=document.getElementById("opciones");zona.innerHTML="";
+ q[3].forEach((op,i)=>{const b=document.createElement("button");b.type="button";b.className="opcion"+(respuestas[actual]===i?" seleccionada":"");const l=document.createElement("span");l.className="letra";l.textContent=String.fromCharCode(65+i);const t=document.createElement("span");t.textContent=op[0];const c=document.createElement("span");c.className="check";c.textContent="✓";b.append(l,t,c);b.onclick=()=>{respuestas[actual]=i;mostrarPregunta();};zona.appendChild(b);});
+ document.getElementById("anterior").disabled=actual===0;document.getElementById("siguiente").disabled=respuestas[actual]===null;document.getElementById("siguiente").textContent=actual===preguntas.length-1?"Ver mis resultados ✓":"Siguiente →";
+}
+function avanzar(){if(respuestas[actual]===null)return;if(actual<preguntas.length-1){actual++;mostrarPregunta();window.scrollTo({top:0,behavior:"smooth"});}else calcularResultado();}
+function regresar(){if(actual>0){actual--;mostrarPregunta();}}
+function calcularResultado(){
+ const pa=[0,0,0,0],pt=[0,0,0,0,0];respuestas.forEach((r,i)=>{const op=preguntas[i][3][r];pa[op[1]]++;pt[op[2]]++;});
+ const ordenar=a=>a.map((p,i)=>({p,i})).sort((x,y)=>y.p-x.p);const ra=ordenar(pa),rt=ordenar(pt),ma=ra[0].i,sa=ra[1].i,mt=rt[0].i;
+ document.getElementById("area").textContent=areas[ma];document.getElementById("explicacionArea").textContent=explicaciones[ma];document.getElementById("porcentajeArea").textContent=pa[ma]+" coincidencias en tus respuestas";
+ document.getElementById("segundaArea").textContent=areas[sa];document.getElementById("explicacionSegunda").textContent=explicaciones[sa];document.getElementById("taller").textContent=talleres[mt];document.getElementById("explicacionTaller").textContent=talleresExp[mt];document.getElementById("porcentajeTaller").textContent=pt[mt]+" coincidencias en tus respuestas";
+ const ul=document.getElementById("materias");ul.innerHTML="";materiasPorArea[ma].forEach(m=>{const li=document.createElement("li");li.textContent=m;ul.appendChild(li);});
+ const graf=document.getElementById("graficaAreas");graf.innerHTML="";ra.forEach(x=>{const f=document.createElement("div");f.className="fila";const n=document.createElement("span");n.textContent=areas[x.i];const bg=document.createElement("div");bg.className="fondo";const r=document.createElement("div");r.className="relleno";r.style.width=(x.p/preguntas.length*100)+"%";bg.appendChild(r);const v=document.createElement("span");v.textContent=x.p;f.append(n,bg,v);graf.appendChild(f);});
+ document.getElementById("consejo").textContent=`De acuerdo con tus respuestas, puedes comenzar explorando el área ${areas[ma]} y el taller de ${talleres[mt]}. Presta atención a las materias señaladas porque pueden ayudarte a fortalecer conocimientos relacionados con tus intereses. Conversa con tus docentes, conoce las actividades de cada taller y considera qué opción se acerca más a tus metas.`;
+ document.getElementById("test").style.display="none";document.getElementById("resultado").style.display="block";window.scrollTo({top:0,behavior:"smooth"});
+}
+function reiniciar(){actual=0;respuestas=Array(preguntas.length).fill(null);document.getElementById("resultado").style.display="none";document.getElementById("inicio").style.display="block";window.scrollTo({top:0,behavior:"smooth"});}
+</script></body></html>
