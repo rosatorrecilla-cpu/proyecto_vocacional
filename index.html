@@ -729,6 +729,537 @@ footer strong {
     }
 }
 
+
+
+/* CORRECCIÓN DE PORTADA EN ESCRITORIO */
+@media (min-width: 761px) {
+    .hero {
+        min-height: 690px;
+    }
+
+    .hero-contenido {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 80px 51% 80px 6%;
+        transform: none !important;
+    }
+
+    .hero-texto-contenedor {
+        width: 100%;
+        max-width: 680px;
+    }
+
+    .hero h1 {
+        font-size: clamp(42px, 4vw, 68px);
+        overflow-wrap: normal;
+    }
+
+    .foto-plantel {
+        width: 43%;
+        max-width: 43%;
+        height: min(470px, 62vh);
+        right: 2%;
+    }
+
+    .mascota-hero {
+        height: min(360px, 48vh);
+        max-width: 22%;
+        right: 39%;
+    }
+}
+
+/* En tabletas y móviles, el contenido se apila y deja de competir por espacio */
+
+/* =========================
+   AJUSTES RESPONSIVE ADICIONALES
+   Conserva enlaces, secciones y funciones existentes.
+========================= */
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+.navbar,
+.marca,
+.nav-links,
+.hero-contenido,
+.hero-botones,
+.tarjetas,
+.bloques {
+    min-width: 0;
+}
+
+.marca > div:last-child {
+    min-width: 0;
+}
+
+.marca h2,
+.marca p,
+.nav-links a,
+.tarjeta h3,
+.bloque h3 {
+    overflow-wrap: anywhere;
+}
+
+.hero-contenido {
+    transform: none;
+    padding-left: clamp(24px, 6%, 84px);
+    padding-right: min(42%, 560px);
+}
+
+.foto-plantel {
+    max-width: 50%;
+}
+
+.ubicacion-plantel {
+    max-width: 100%;
+}
+
+@media (max-width: 1100px) {
+    .navbar {
+        gap: 14px;
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+
+    .nav-links {
+        gap: 12px 18px;
+        justify-content: flex-end;
+    }
+
+    .hero-contenido {
+        padding-right: 45%;
+        padding-left: 5%;
+    }
+
+    .hero-texto-contenedor {
+        max-width: 100%;
+    }
+
+    .hero h1 {
+        font-size: clamp(38px, 4.5vw, 52px);
+    }
+
+    .foto-plantel {
+        width: 43%;
+        max-width: 43%;
+        height: clamp(280px, 38vw, 390px);
+    }
+
+    .mascota-hero {
+        height: clamp(220px, 28vw, 290px);
+    }
+}
+
+@media (max-width: 760px) {
+    .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 12px 4%;
+    }
+
+    .marca {
+        justify-content: center;
+    }
+
+    .nav-links {
+        justify-content: center;
+        gap: 10px 16px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+        padding: 5px 2px;
+    }
+
+    .hero {
+        min-height: 0;
+        align-items: flex-start;
+    }
+
+    .hero-contenido {
+        padding: 48px 6% 340px;
+    }
+
+    .hero-texto-contenedor {
+        max-width: 100%;
+    }
+
+    .hero h1 {
+        margin-top: 18px;
+        font-size: clamp(36px, 7vw, 48px);
+        line-height: 1.12;
+    }
+
+    .hero-texto {
+        font-size: clamp(16px, 2.5vw, 19px);
+    }
+
+    .foto-plantel {
+        width: 82%;
+        max-width: 82%;
+        height: clamp(190px, 38vw, 260px);
+        top: auto;
+        right: 5%;
+        bottom: 22px;
+        transform: none;
+        border-width: 6px;
+    }
+
+    .mascota-hero {
+        height: clamp(170px, 32vw, 230px);
+        max-width: 42%;
+        right: 1%;
+        bottom: 0;
+    }
+
+    .tarjetas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .bloques {
+        grid-template-columns: 1fr;
+    }
+
+    .contenedor {
+        padding: 55px 5%;
+    }
+
+    .institucional {
+        padding: 55px 5%;
+    }
+
+    .ubicacion-plantel {
+        width: 100%;
+        justify-content: flex-start;
+        padding: 12px 15px;
+    }
+
+    .invitacion {
+        width: calc(100% - 32px);
+        padding: 38px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 48px;
+        height: 48px;
+    }
+
+    .marca {
+        gap: 9px;
+    }
+
+    .marca h2 {
+        font-size: 17px;
+    }
+
+    .marca p {
+        font-size: 8px;
+        line-height: 1.4;
+        letter-spacing: .2px;
+    }
+
+    .nav-links {
+        gap: 7px 13px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .hero-contenido {
+        padding: 38px 20px 290px;
+    }
+
+    .etiqueta {
+        font-size: 15px;
+    }
+
+    .hero h1 {
+        font-size: clamp(32px, 9vw, 40px);
+    }
+
+    .hero-texto {
+        font-size: 16px;
+        line-height: 1.55;
+    }
+
+    .hero-botones {
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 14px 16px;
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .foto-plantel {
+        width: 88%;
+        max-width: 88%;
+        height: 205px;
+        right: 4%;
+        bottom: 18px;
+    }
+
+    .mascota-hero {
+        height: 175px;
+        max-width: 43%;
+    }
+
+    .franja {
+        padding: 20px 6%;
+    }
+
+    .franja p {
+        font-size: 14px;
+    }
+
+    .contenedor {
+        padding: 45px 16px;
+    }
+
+    .encabezado-seccion {
+        margin-bottom: 28px;
+    }
+
+    .encabezado-seccion p {
+        font-size: 14px;
+    }
+
+    .tarjetas {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .tarjeta {
+        padding: 22px 19px;
+    }
+
+    .institucional {
+        padding: 45px 16px;
+    }
+
+    .bloque {
+        padding: 21px;
+    }
+
+    .bloque p {
+        font-size: 14px;
+        line-height: 1.75;
+    }
+
+    .invitacion {
+        margin: 42px auto;
+        padding: 32px 18px;
+        border-radius: 19px;
+    }
+
+    footer {
+        padding: 25px 16px;
+        overflow-wrap: anywhere;
+    }
+}
+
+@media (max-width: 350px) {
+    .marca p {
+        max-width: 220px;
+    }
+
+    .nav-links {
+        gap: 6px 10px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .hero-contenido {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .hero h1 {
+        font-size: 31px;
+    }
+}
+
+
+/* Ajustes finales de estabilidad visual */
+@media (min-width: 761px) {
+    .hero-contenido {
+        padding-left: clamp(28px, 6vw, 100px);
+        padding-right: 51%;
+    }
+}
+@media (max-width: 760px) {
+    .hero-contenido {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 42px 6% 340px;
+        transform: none !important;
+    }
+    .hero-texto-contenedor {
+        width: 100%;
+        max-width: 100%;
+    }
+    .hero h1 {
+        overflow-wrap: break-word;
+    }
+}
+
+
+
+/* =========================
+   RESPONSIVE FINAL
+   Ajustes para tabletas y celulares
+========================= */
+
+@media (min-width: 761px) and (max-width: 900px) {
+    .hero {
+        min-height: 0;
+        align-items: flex-start;
+    }
+
+    .hero-contenido {
+        width: 100%;
+        max-width: 100%;
+        padding: 55px 6% 355px;
+        margin: 0;
+    }
+
+    .hero-texto-contenedor {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero h1 {
+        font-size: clamp(38px, 6vw, 52px);
+    }
+
+    .foto-plantel {
+        width: 72%;
+        max-width: 72%;
+        height: clamp(210px, 32vw, 290px);
+        top: auto;
+        right: 5%;
+        bottom: 22px;
+        transform: none;
+    }
+
+    .mascota-hero {
+        height: clamp(175px, 27vw, 235px);
+        max-width: 35%;
+        right: 1%;
+        bottom: 0;
+    }
+
+    .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 760px) {
+    .navbar,
+    .marca,
+    .nav-links {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .marca h2,
+    .marca p {
+        overflow-wrap: anywhere;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        row-gap: 8px;
+    }
+
+    .hero-contenido {
+        box-sizing: border-box;
+    }
+
+    .hero-botones {
+        width: 100%;
+    }
+
+    .hero-botones .btn {
+        max-width: 100%;
+        white-space: normal;
+    }
+
+    .tarjeta,
+    .bloque {
+        min-width: 0;
+    }
+
+    .ubicacion-plantel {
+        box-sizing: border-box;
+        overflow-wrap: anywhere;
+    }
+
+    .ubicacion-plantel > div {
+        min-width: 0;
+    }
+
+    .invitacion {
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 380px) {
+    .marca {
+        justify-content: flex-start;
+    }
+
+    .marca h2 {
+        font-size: 16px;
+    }
+
+    .nav-links {
+        column-gap: 10px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .hero-contenido {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .hero h1 {
+        font-size: clamp(29px, 8.5vw, 34px);
+    }
+
+    .foto-plantel {
+        width: 90%;
+        max-width: 90%;
+        right: 3%;
+    }
+
+    .tarjeta,
+    .bloque {
+        padding: 19px 16px;
+    }
+}
+
 </style>
 </head>
 
