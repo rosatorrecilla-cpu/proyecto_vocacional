@@ -9,8 +9,6 @@
 <meta name="description" content="Sistema web de orientación vocacional para apoyar a los estudiantes del TEBAEV Hueyapan de Ocampo en la exploración de sus intereses, habilidades y opciones académicas.">
 
 <style>
-
-/* FUENTES */
 @font-face {
     font-family: 'Super Waffles';
     src: url('fonts/Super Waffles.ttf') format('truetype');
@@ -26,7 +24,6 @@
     src: url('fonts/King.ttf') format('truetype');
 }
 
-/* COLORES */
 :root {
     --azul: #64112f;
     --azul-claro: #a7194b;
@@ -35,10 +32,19 @@
     --blanco: #ffffff;
     --gris: #64748b;
     --fondo: #fffaf2;
+    --rosa: #a7194b;
+    --vino: #64112f;
 }
 
 * {
     box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
 }
 
 html {
@@ -47,7 +53,6 @@ html {
 }
 
 body {
-    margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
     background: var(--fondo);
     color: #243047;
@@ -57,9 +62,10 @@ a {
     text-decoration: none;
 }
 
-/* =========================
-   MENÚ DE NAVEGACIÓN
-========================= */
+img {
+    max-width: 100%;
+    display: block;
+}
 
 .navbar {
     display: flex;
@@ -71,12 +77,18 @@ a {
     box-shadow: 0 4px 22px #4b102014;
     position: relative;
     z-index: 10;
+    width: 100%;
 }
 
 .marca {
     display: flex;
     align-items: center;
     gap: 12px;
+    min-width: 0;
+}
+
+.marca > div:last-child {
+    min-width: 0;
 }
 
 .logo {
@@ -95,6 +107,7 @@ a {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    object-position: center;
 }
 
 .marca h2 {
@@ -128,10 +141,6 @@ a {
     color: var(--rosa);
 }
 
-/* =========================
-   PORTADA PRINCIPAL
-========================= */
-
 .hero {
     position: relative;
     min-height: 690px;
@@ -143,7 +152,6 @@ a {
     color: white;
 }
 
-/* DECORACIÓN DEL FONDO */
 .hero::before {
     content: "";
     position: absolute;
@@ -168,18 +176,17 @@ a {
     z-index: -1;
 }
 
-/* CONTENIDO DEL HERO */
 .hero-contenido {
-    max-width: 1400px;
     width: 100%;
-    margin: auto;
-    padding: 85px 42% 85px 6%;
+    margin: 0;
+    padding: 80px 51% 80px clamp(28px, 6vw, 100px);
     position: relative;
     z-index: 3;
 }
 
 .hero-texto-contenedor {
     max-width: 680px;
+    width: 100%;
     position: relative;
     z-index: 3;
 }
@@ -189,13 +196,14 @@ a {
     font-size: 18px;
     letter-spacing: 1px;
     color: #fff5e7;
+    display: inline-block;
 }
 
 .hero h1 {
     font-family: 'Melt Swashes', cursive;
     max-width: 750px;
     margin: 25px 0 20px;
-    font-size: clamp(40px, 5vw, 68px);
+    font-size: clamp(42px, 4vw, 68px);
     line-height: 1.2;
     text-shadow: 0 3px 18px rgba(48,0,18,.16);
 }
@@ -213,7 +221,6 @@ a {
     margin-bottom: 30px;
 }
 
-/* BOTONES */
 .hero-botones {
     display: flex;
     gap: 15px;
@@ -257,15 +264,12 @@ a {
     color: var(--vino);
 }
 
-/* =========================
-   FOTOGRAFÍA DE LOS ALUMNOS
-========================= */
-
 .foto-plantel {
     position: absolute;
-    width: 46%;
-    height: 470px;
-    right: -2%;
+    width: 43%;
+    max-width: 43%;
+    height: min(470px, 62vh);
+    right: 2%;
     top: 50%;
     transform: translateY(-50%);
     border: 10px solid #f7d8a0;
@@ -273,32 +277,29 @@ a {
     overflow: hidden;
     box-shadow: 0 20px 45px rgba(0,0,0,.25);
     z-index: 1;
+    background: #530b26;
 }
 
 .foto-plantel img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: center 25%;
 }
 
-/* CONEJO DEL TEBAEV */
 .mascota-hero {
     position: absolute;
     z-index: 4;
-    right: 35%;
-    bottom: 10px;
-    height: 390px;
-    max-width: 38%;
+    right: 39%;
+    bottom: 0;
+    height: min(360px, 48vh);
+    max-width: 24%;
     width: auto;
     object-fit: contain;
-    object-position: bottom;
-    filter: drop-shadow(0 10px 12px rgba(43, 7, 20, 0.20));
+    object-position: bottom center;
+    filter: drop-shadow(0 10px 12px rgba(43, 7, 20, 0.25));
     pointer-events: none;
 }
-/* =========================
-   FRASE MOTIVADORA
-========================= */
 
 .franja {
     background: white;
@@ -319,10 +320,6 @@ a {
 .franja span {
     color: var(--morado);
 }
-
-/* =========================
-   SECCIONES GENERALES
-========================= */
 
 .contenedor {
     max-width: 1150px;
@@ -356,16 +353,13 @@ a {
     font-size: 15px;
 }
 
-/* =========================
-   UBICACIÓN DEL PLANTEL
-========================= */
-
 .ubicacion-plantel {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 12px;
     width: fit-content;
+    max-width: 100%;
     margin: 25px auto 35px;
     padding: 12px 22px;
     background: #fff4f7;
@@ -376,6 +370,7 @@ a {
 
 .icono-ubicacion {
     font-size: 27px;
+    flex-shrink: 0;
 }
 
 .ubicacion-plantel strong {
@@ -395,10 +390,6 @@ a {
     font-weight: bold;
 }
 
-/* =========================
-   TARJETAS DE EXPLORACIÓN
-========================= */
-
 .tarjetas {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -414,6 +405,7 @@ a {
     padding: 25px 21px;
     box-shadow: 0 12px 30px rgba(87,18,43,.07);
     transition: .3s;
+    min-width: 0;
 }
 
 .tarjeta:hover {
@@ -469,10 +461,6 @@ a {
     color: var(--azul-claro);
 }
 
-/* =========================
-   OBJETIVO, MISIÓN Y VISIÓN
-========================= */
-
 .institucional {
     background: white;
     padding: 75px 25px;
@@ -496,6 +484,7 @@ a {
     background: #fffaf5;
     border-top: 5px solid var(--azul-claro);
     scroll-margin-top: 25px;
+    min-width: 0;
 }
 
 .bloque:nth-child(2) {
@@ -532,10 +521,6 @@ a {
     font-weight: 800;
 }
 
-/* =========================
-   INVITACIÓN FINAL
-========================= */
-
 .invitacion {
     margin: 75px auto;
     max-width: 1050px;
@@ -559,10 +544,6 @@ a {
     line-height: 1.8;
 }
 
-/* =========================
-   PIE DE PÁGINA
-========================= */
-
 footer {
     background: #4d1029;
     color: #cbd5e1;
@@ -574,252 +555,6 @@ footer {
 
 footer strong {
     color: white;
-}
-
-/* =========================
-   TABLETAS
-========================= */
-
-@media (max-width: 1000px) {
-
-    .foto-plantel {
-        width: 43%;
-        height: 390px;
-        right: 2%;
-    }
-
-    .mascota-hero {
-        height: 290px;
-        right: 32%;
-    }
-
-    .hero-texto-contenedor {
-        max-width: 55%;
-    }
-
-    .hero h1 {
-        font-size: 48px;
-    }
-
-    .tarjetas {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .bloques {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* =========================
-   CELULARES
-========================= */
-
-@media (max-width: 650px) {
-
-    .navbar {
-        align-items: center;
-        flex-direction: column;
-        gap: 14px;
-        padding: 15px 4%;
-    }
-
-    .marca {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .marca p {
-        font-size: 9px;
-        letter-spacing: .5px;
-    }
-
-    .nav-links {
-        justify-content: center;
-        gap: 12px 18px;
-    }
-
-    .nav-links a {
-        font-size: 12px;
-    }
-
-    .hero {
-        min-height: 820px;
-        align-items: flex-start;
-    }
-
-    .hero-contenido {
-        padding: 48px 6% 380px;
-    }
-
-    .hero-texto-contenedor {
-        max-width: 100%;
-    }
-
-    .hero h1 {
-        font-size: clamp(37px, 10vw, 48px);
-    }
-
-    .hero-texto {
-        font-size: 17px;
-    }
-
-    .hero-botones {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .foto-plantel {
-        width: 88%;
-        height: 260px;
-        top: auto;
-        right: 6%;
-        bottom: 25px;
-        transform: none;
-        border-width: 6px;
-        border-radius: 35% 8% 35% 8%;
-    }
-
-    .mascota-hero {
-        height: 230px;
-        max-width: 48%;
-        right: 1%;
-        bottom: 0;
-    }
-
-    .tarjetas {
-        grid-template-columns: 1fr;
-    }
-
-    .contenedor {
-        padding: 55px 20px;
-    }
-
-    .institucional {
-        padding: 55px 20px;
-    }
-
-    .bloque {
-        padding: 23px;
-    }
-
-    .invitacion {
-        margin: 50px auto;
-    }
-
-    .ubicacion-plantel {
-        max-width: 100%;
-    }
-}
-
-/* ACCESIBILIDAD */
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-
-    *, *::before, *::after {
-        transition: none !important;
-    }
-}
-
-/* ACOMODAR EL TEXTO DE LA PORTADA */
-@media (min-width: 901px) {
-    .hero-contenido {
-        transform: translateX(-90px);
-    }
-}
-
-
-
-/* CORRECCIÓN DE PORTADA EN ESCRITORIO */
-@media (min-width: 761px) {
-    .hero {
-        min-height: 690px;
-    }
-
-    .hero-contenido {
-        width: 100%;
-        max-width: none;
-        margin: 0;
-        padding: 80px 51% 80px 6%;
-        transform: none !important;
-    }
-
-    .hero-texto-contenedor {
-        width: 100%;
-        max-width: 680px;
-    }
-
-    .hero h1 {
-        font-size: clamp(42px, 4vw, 68px);
-        overflow-wrap: normal;
-    }
-
-    .foto-plantel {
-        width: 43%;
-        max-width: 43%;
-        height: min(470px, 62vh);
-        right: 2%;
-    }
-
-    .mascota-hero {
-        height: min(360px, 48vh);
-        max-width: 22%;
-        right: 39%;
-    }
-}
-
-/* En tabletas y móviles, el contenido se apila y deja de competir por espacio */
-
-/* =========================
-   AJUSTES RESPONSIVE ADICIONALES
-   Conserva enlaces, secciones y funciones existentes.
-========================= */
-
-html, body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-img {
-    max-width: 100%;
-}
-
-.navbar,
-.marca,
-.nav-links,
-.hero-contenido,
-.hero-botones,
-.tarjetas,
-.bloques {
-    min-width: 0;
-}
-
-.marca > div:last-child {
-    min-width: 0;
-}
-
-.marca h2,
-.marca p,
-.nav-links a,
-.tarjeta h3,
-.bloque h3 {
-    overflow-wrap: anywhere;
-}
-
-.hero-contenido {
-    transform: none;
-    padding-left: clamp(24px, 6%, 84px);
-    padding-right: min(42%, 560px);
-}
-
-.foto-plantel {
-    max-width: 50%;
-}
-
-.ubicacion-plantel {
-    max-width: 100%;
 }
 
 @media (max-width: 1100px) {
@@ -835,90 +570,23 @@ img {
     }
 
     .hero-contenido {
-        padding-right: 45%;
+        padding-right: 48%;
         padding-left: 5%;
     }
 
-    .hero-texto-contenedor {
-        max-width: 100%;
-    }
-
     .hero h1 {
-        font-size: clamp(38px, 4.5vw, 52px);
+        font-size: clamp(38px, 4.3vw, 52px);
     }
 
     .foto-plantel {
         width: 43%;
         max-width: 43%;
-        height: clamp(280px, 38vw, 390px);
+        height: clamp(310px, 38vw, 410px);
     }
 
     .mascota-hero {
-        height: clamp(220px, 28vw, 290px);
-    }
-}
-
-@media (max-width: 760px) {
-    .navbar {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 12px;
-        padding: 12px 4%;
-    }
-
-    .marca {
-        justify-content: center;
-    }
-
-    .nav-links {
-        justify-content: center;
-        gap: 10px 16px;
-    }
-
-    .nav-links a {
-        font-size: 13px;
-        padding: 5px 2px;
-    }
-
-    .hero {
-        min-height: 0;
-        align-items: flex-start;
-    }
-
-    .hero-contenido {
-        padding: 48px 6% 340px;
-    }
-
-    .hero-texto-contenedor {
-        max-width: 100%;
-    }
-
-    .hero h1 {
-        margin-top: 18px;
-        font-size: clamp(36px, 7vw, 48px);
-        line-height: 1.12;
-    }
-
-    .hero-texto {
-        font-size: clamp(16px, 2.5vw, 19px);
-    }
-
-    .foto-plantel {
-        width: 82%;
-        max-width: 82%;
-        height: clamp(190px, 38vw, 260px);
-        top: auto;
-        right: 5%;
-        bottom: 22px;
-        transform: none;
-        border-width: 6px;
-    }
-
-    .mascota-hero {
-        height: clamp(170px, 32vw, 230px);
-        max-width: 42%;
-        right: 1%;
-        bottom: 0;
+        height: clamp(230px, 28vw, 300px);
+        right: 37%;
     }
 
     .tarjetas {
@@ -927,6 +595,107 @@ img {
 
     .bloques {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .hero {
+        min-height: 0;
+        align-items: flex-start;
+    }
+
+    .hero-contenido {
+        width: 100%;
+        max-width: 100%;
+        padding: 55px 6% 360px;
+        margin: 0;
+    }
+
+    .hero-texto-contenedor {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero h1 {
+        font-size: clamp(38px, 6vw, 52px);
+    }
+
+    .foto-plantel {
+        width: 72%;
+        max-width: 72%;
+        height: clamp(230px, 34vw, 300px);
+        top: auto;
+        right: 5%;
+        bottom: 22px;
+        transform: none;
+    }
+
+    .mascota-hero {
+        height: clamp(190px, 28vw, 245px);
+        max-width: 38%;
+        right: 1%;
+        bottom: 0;
+    }
+
+    .nav-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 760px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 4%;
+    }
+
+    .marca {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+        gap: 10px 16px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+        padding: 4px 2px;
+    }
+
+    .hero-contenido {
+        padding: 42px 6% 330px;
+    }
+
+    .hero h1 {
+        margin-top: 18px;
+        font-size: clamp(35px, 7.5vw, 46px);
+        line-height: 1.15;
+    }
+
+    .hero-texto {
+        font-size: clamp(16px, 2.8vw, 19px);
+    }
+
+    .foto-plantel {
+        width: 84%;
+        max-width: 84%;
+        height: clamp(210px, 42vw, 270px);
+        right: 5%;
+        bottom: 20px;
+        border-width: 6px;
+        border-radius: 35% 8% 35% 8%;
+    }
+
+    .mascota-hero {
+        height: clamp(185px, 34vw, 230px);
+        max-width: 46%;
+        right: 0;
+        bottom: 0;
+        z-index: 5;
     }
 
     .contenedor {
@@ -964,7 +733,7 @@ img {
     }
 
     .marca p {
-        font-size: 8px;
+        font-size: 8.5px;
         line-height: 1.4;
         letter-spacing: .2px;
     }
@@ -978,7 +747,7 @@ img {
     }
 
     .hero-contenido {
-        padding: 38px 20px 290px;
+        padding: 36px 20px 285px;
     }
 
     .etiqueta {
@@ -995,6 +764,8 @@ img {
     }
 
     .hero-botones {
+        flex-direction: column;
+        align-items: stretch;
         gap: 10px;
     }
 
@@ -1014,8 +785,10 @@ img {
     }
 
     .mascota-hero {
-        height: 175px;
-        max-width: 43%;
+        height: 180px;
+        max-width: 48%;
+        right: 0;
+        bottom: 0;
     }
 
     .franja {
@@ -1068,157 +841,6 @@ img {
 
     footer {
         padding: 25px 16px;
-        overflow-wrap: anywhere;
-    }
-}
-
-@media (max-width: 350px) {
-    .marca p {
-        max-width: 220px;
-    }
-
-    .nav-links {
-        gap: 6px 10px;
-    }
-
-    .nav-links a {
-        font-size: 11px;
-    }
-
-    .hero-contenido {
-        padding-left: 16px;
-        padding-right: 16px;
-    }
-
-    .hero h1 {
-        font-size: 31px;
-    }
-}
-
-
-/* Ajustes finales de estabilidad visual */
-@media (min-width: 761px) {
-    .hero-contenido {
-        padding-left: clamp(28px, 6vw, 100px);
-        padding-right: 51%;
-    }
-}
-@media (max-width: 760px) {
-    .hero-contenido {
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        padding: 42px 6% 340px;
-        transform: none !important;
-    }
-    .hero-texto-contenedor {
-        width: 100%;
-        max-width: 100%;
-    }
-    .hero h1 {
-        overflow-wrap: break-word;
-    }
-}
-
-
-
-/* =========================
-   RESPONSIVE FINAL
-   Ajustes para tabletas y celulares
-========================= */
-
-@media (min-width: 761px) and (max-width: 900px) {
-    .hero {
-        min-height: 0;
-        align-items: flex-start;
-    }
-
-    .hero-contenido {
-        width: 100%;
-        max-width: 100%;
-        padding: 55px 6% 355px;
-        margin: 0;
-    }
-
-    .hero-texto-contenedor {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .hero h1 {
-        font-size: clamp(38px, 6vw, 52px);
-    }
-
-    .foto-plantel {
-        width: 72%;
-        max-width: 72%;
-        height: clamp(210px, 32vw, 290px);
-        top: auto;
-        right: 5%;
-        bottom: 22px;
-        transform: none;
-    }
-
-    .mascota-hero {
-        height: clamp(175px, 27vw, 235px);
-        max-width: 35%;
-        right: 1%;
-        bottom: 0;
-    }
-
-    .nav-links {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-}
-
-@media (max-width: 760px) {
-    .navbar,
-    .marca,
-    .nav-links {
-        width: 100%;
-        min-width: 0;
-    }
-
-    .marca h2,
-    .marca p {
-        overflow-wrap: anywhere;
-    }
-
-    .nav-links {
-        flex-wrap: wrap;
-        row-gap: 8px;
-    }
-
-    .hero-contenido {
-        box-sizing: border-box;
-    }
-
-    .hero-botones {
-        width: 100%;
-    }
-
-    .hero-botones .btn {
-        max-width: 100%;
-        white-space: normal;
-    }
-
-    .tarjeta,
-    .bloque {
-        min-width: 0;
-    }
-
-    .ubicacion-plantel {
-        box-sizing: border-box;
-        overflow-wrap: anywhere;
-    }
-
-    .ubicacion-plantel > div {
-        min-width: 0;
-    }
-
-    .invitacion {
-        box-sizing: border-box;
     }
 }
 
@@ -1242,6 +864,7 @@ img {
     .hero-contenido {
         padding-left: 16px;
         padding-right: 16px;
+        padding-bottom: 265px;
     }
 
     .hero h1 {
@@ -1251,7 +874,13 @@ img {
     .foto-plantel {
         width: 90%;
         max-width: 90%;
+        height: 190px;
         right: 3%;
+    }
+
+    .mascota-hero {
+        height: 165px;
+        max-width: 50%;
     }
 
     .tarjeta,
@@ -1260,58 +889,29 @@ img {
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
 
-
-/* CORRECCIÓN DE LA MASCOTA EN TELÉFONOS */
-@media (max-width: 760px) {
-    .mascota-hero {
-        display: block;
-        width: auto;
-        height: clamp(185px, 34vw, 230px);
-        max-width: 48%;
-        object-fit: contain;
-        object-position: bottom center;
-        right: 0;
-        bottom: 0;
-        z-index: 5;
+    *, *::before, *::after {
+        transition: none !important;
     }
 }
-
-@media (max-width: 480px) {
-    .mascota-hero {
-        height: 185px;
-        max-width: 50%;
-        right: 0;
-        bottom: 0;
-    }
-}
-
-@media (max-width: 380px) {
-    .mascota-hero {
-        height: 165px;
-        max-width: 52%;
-    }
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- MENÚ PRINCIPAL -->
 <nav class="navbar" id="inicio">
-
     <div class="marca">
-
         <div class="logo">
             <img src="img/logo-tebaev.jpeg" alt="Logo oficial de TEBAEV">
         </div>
-
         <div>
             <h2>TEBAEV</h2>
             <p>TELEBACHILLERATO DE VERACRUZ · HUEYAPAN DE OCAMPO</p>
         </div>
-
     </div>
 
     <div class="nav-links">
@@ -1321,16 +921,11 @@ img {
         <a href="#vision">Visión</a>
         <a href="#contacto">Contacto</a>
     </div>
-
 </nav>
 
-<!-- PORTADA PRINCIPAL -->
 <header class="hero">
-
     <div class="hero-contenido">
-
         <div class="hero-texto-contenedor">
-
             <span class="etiqueta">
                 ✨ TU FUTURO COMIENZA AQUÍ
             </span>
@@ -1348,7 +943,6 @@ img {
             </p>
 
             <div class="hero-botones">
-
                 <a href="test.html" class="btn btn-dorado">
                     🧭 Comenzar test vocacional →
                 </a>
@@ -1356,274 +950,186 @@ img {
                 <a href="#explora" class="btn btn-transparente">
                     Explorar opciones ↓
                 </a>
-
             </div>
-
         </div>
-
     </div>
 
-    <!-- FOTOGRAFÍA DE LOS ALUMNOS -->
     <div class="foto-plantel">
         <img src="img/alumnos-tebaev.jpeg"
              alt="Estudiantes del TEBAEV Hueyapan de Ocampo">
     </div>
 
-    <!-- MASCOTA INSTITUCIONAL -->
     <img class="mascota-hero"
          src="img/conejo-tebaev.png"
          alt="Mascota del TEBAEV Hueyapan de Ocampo"
          onerror="this.style.display='none'">
-
 </header>
 
-<!-- FRASE MOTIVADORA -->
 <section class="franja">
-
     <p>
         💡 No tienes que tener todas las respuestas hoy.
         <span>¡Empieza por descubrir quién eres!</span>
     </p>
-
 </section>
 
 <main>
+    <section class="contenedor" id="explora">
+        <div class="encabezado-seccion">
+            <span class="subtitulo">EXPLORA TUS POSIBILIDADES</span>
 
-<!-- OPCIONES PARA LOS ESTUDIANTES -->
-<section class="contenedor" id="explora">
+            <h2>Tu futuro tiene muchas opciones</h2>
 
-    <div class="encabezado-seccion">
+            <p>
+                Conoce tus intereses, descubre nuevas áreas de aprendizaje
+                y encuentra información que te ayude a tomar decisiones
+                sobre tu futuro académico.
+            </p>
 
-        <span class="subtitulo">EXPLORA TUS POSIBILIDADES</span>
+            <div class="ubicacion-plantel">
+                <span class="icono-ubicacion">📍</span>
 
-        <h2>Tu futuro tiene muchas opciones</h2>
+                <div>
+                    <strong>Ubicación del plantel</strong>
+                    <p>TEBAEV Hueyapan de Ocampo, Veracruz.</p>
+                    <a href="https://maps.apple/p/9.TAYBcPfgDCwK"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Consultar ubicación →
+                    </a>
+                </div>
+            </div>
+        </div>
 
-        <p>
-            Conoce tus intereses, descubre nuevas áreas de aprendizaje
-            y encuentra información que te ayude a tomar decisiones
-            sobre tu futuro académico.
-        </p>
+        <div class="tarjetas">
+            <article class="tarjeta">
+                <div class="icono" aria-hidden="true">📝</div>
+                <h3>Test vocacional</h3>
+                <p>
+                    Responde preguntas sobre tus intereses y preferencias
+                    para comenzar a explorar las áreas que podrían
+                    relacionarse contigo.
+                </p>
+                <a href="test.html">Descubrir mi vocación →</a>
+            </article>
 
-        <!-- UBICACIÓN DEL PLANTEL -->
-        <div class="ubicacion-plantel">
+            <article class="tarjeta">
+                <div class="icono" aria-hidden="true">📚</div>
+                <h3>Materias</h3>
+                <p>
+                    Conoce las materias que forman parte de tu preparación
+                    académica y descubre nuevos temas de interés.
+                </p>
+                <a href="materias.html">Conocer materias →</a>
+            </article>
 
-            <span class="icono-ubicacion">📍</span>
+            <article class="tarjeta">
+                <div class="icono" aria-hidden="true">🎨</div>
+                <h3>Talleres</h3>
+                <p>
+                    Explora actividades que pueden ayudarte a desarrollar
+                    habilidades, creatividad y trabajo en equipo.
+                </p>
+                <a href="talleres.html">Explorar talleres →</a>
+            </article>
 
-            <div>
-                <strong>Ubicación del plantel</strong>
+            <article class="tarjeta">
+                <div class="icono" aria-hidden="true">🚀</div>
+                <h3>Áreas propedéuticas</h3>
+                <p>
+                    Infórmate sobre las áreas de preparación académica
+                    y las posibilidades que puedes considerar para
+                    continuar tus estudios.
+                </p>
+                <a href="areas.html">Conocer las áreas →</a>
+            </article>
+        </div>
+    </section>
 
-                <p>TEBAEV Hueyapan de Ocampo, Veracruz.</p>
+    <section class="institucional">
+        <div class="contenedor">
+            <div class="encabezado-seccion">
+                <span class="subtitulo">CONOCE NUESTRA INSTITUCIÓN</span>
 
-                <a href="https://maps.apple/p/9.TAYBcPfgDCwK"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    Consultar ubicación →
-                </a>
+                <h2>Comprometidos con tu formación</h2>
+
+                <p>
+                    Conoce el propósito, los valores y la visión educativa
+                    del TEBAEV Hueyapan de Ocampo.
+                </p>
             </div>
 
+            <div class="bloques">
+                <article class="bloque" id="objetivo">
+                    <span class="numero">01</span>
+                    <h3>🎯 Objetivo</h3>
+                    <p>
+                        Formar estudiantes integrales mediante una
+                        educación humanista, incluyente y contextualizada
+                        que fortalezca el pensamiento crítico, la
+                        responsabilidad social, la equidad, la diversidad
+                        cultural y el trabajo colaborativo, promoviendo
+                        su participación activa en su entorno.
+                    </p>
+                    <a class="volver" href="#inicio">↑ Volver al inicio</a>
+                </article>
+
+                <article class="bloque" id="mision">
+                    <span class="numero">02</span>
+                    <h3>💙 Misión</h3>
+                    <p>
+                        Formar estudiantes críticos, sensibles y propositivos,
+                        capaces de participar activamente en la transformación
+                        de su entorno con dignidad, responsabilidad y compromiso
+                        social, mediante un modelo pedagógico humanista y
+                        contextualizado que fomente los derechos humanos,
+                        la equidad, la diversidad cultural, el pensamiento
+                        ético y el trabajo colaborativo.
+                    </p>
+                    <a class="volver" href="#inicio">↑ Volver al inicio</a>
+                </article>
+
+                <article class="bloque" id="vision">
+                    <span class="numero">03</span>
+                    <h3>🌟 Visión</h3>
+                    <p>
+                        Consolidarse como una institución de excelencia
+                        académica y humana, reconocida por generar espacios
+                        educativos incluyentes, interculturales y sostenibles,
+                        donde el arte, la ciencia, el deporte y la cultura
+                        sean parte fundamental del aprendizaje, impulsando
+                        la innovación pedagógica, el liderazgo colaborativo,
+                        la justicia social y el uso significativo de las
+                        tecnologías.
+                    </p>
+                    <a class="volver" href="#inicio">↑ Volver al inicio</a>
+                </article>
+            </div>
         </div>
+    </section>
 
-    </div>
-
-    <!-- TARJETAS -->
-    <div class="tarjetas">
-
-        <article class="tarjeta">
-
-            <div class="icono" aria-hidden="true">📝</div>
-
-            <h3>Test vocacional</h3>
-
-            <p>
-                Responde preguntas sobre tus intereses y preferencias
-                para comenzar a explorar las áreas que podrían
-                relacionarse contigo.
-            </p>
-
-            <a href="test.html">Descubrir mi vocación →</a>
-
-        </article>
-
-        <article class="tarjeta">
-
-            <div class="icono" aria-hidden="true">📚</div>
-
-            <h3>Materias</h3>
-
-            <p>
-                Conoce las materias que forman parte de tu preparación
-                académica y descubre nuevos temas de interés.
-            </p>
-
-            <a href="materias.html">Conocer materias →</a>
-
-        </article>
-
-        <article class="tarjeta">
-
-            <div class="icono" aria-hidden="true">🎨</div>
-
-            <h3>Talleres</h3>
-
-            <p>
-                Explora actividades que pueden ayudarte a desarrollar
-                habilidades, creatividad y trabajo en equipo.
-            </p>
-
-            <a href="talleres.html">Explorar talleres →</a>
-
-        </article>
-
-        <article class="tarjeta">
-
-            <div class="icono" aria-hidden="true">🚀</div>
-
-            <h3>Áreas propedéuticas</h3>
-
-            <p>
-                Infórmate sobre las áreas de preparación académica
-                y las posibilidades que puedes considerar para
-                continuar tus estudios.
-            </p>
-
-            <a href="areas.html">Conocer las áreas →</a>
-
-        </article>
-
-    </div>
-
-</section>
-
-<!-- INFORMACIÓN INSTITUCIONAL -->
-<section class="institucional">
-
-    <div class="contenedor">
-
-        <div class="encabezado-seccion">
-
-            <span class="subtitulo">CONOCE NUESTRA INSTITUCIÓN</span>
-
-            <h2>Comprometidos con tu formación</h2>
-
-            <p>
-                Conoce el propósito, los valores y la visión educativa
-                del TEBAEV Hueyapan de Ocampo.
-            </p>
-
-        </div>
-
-        <div class="bloques">
-
-            <article class="bloque" id="objetivo">
-
-                <span class="numero">01</span>
-
-                <h3>🎯 Objetivo</h3>
-
-                <p>
-                    Formar estudiantes integrales mediante una
-                    educación humanista, incluyente y contextualizada
-                    que fortalezca el pensamiento crítico, la
-                    responsabilidad social, la equidad, la diversidad
-                    cultural y el trabajo colaborativo, promoviendo
-                    su participación activa en su entorno.
-                </p>
-
-                <a class="volver" href="#inicio">
-                    ↑ Volver al inicio
-                </a>
-
-            </article>
-
-            <article class="bloque" id="mision">
-
-                <span class="numero">02</span>
-
-                <h3>💙 Misión</h3>
-
-                <p>
-                    Formar estudiantes críticos, sensibles y propositivos,
-                    capaces de participar activamente en la transformación
-                    de su entorno con dignidad, responsabilidad y compromiso
-                    social, mediante un modelo pedagógico humanista y
-                    contextualizado que fomente los derechos humanos,
-                    la equidad, la diversidad cultural, el pensamiento
-                    ético y el trabajo colaborativo.
-                </p>
-
-                <a class="volver" href="#inicio">
-                    ↑ Volver al inicio
-                </a>
-
-            </article>
-
-            <article class="bloque" id="vision">
-
-                <span class="numero">03</span>
-
-                <h3>🌟 Visión</h3>
-
-                <p>
-                    Consolidarse como una institución de excelencia
-                    académica y humana, reconocida por generar espacios
-                    educativos incluyentes, interculturales y sostenibles,
-                    donde el arte, la ciencia, el deporte y la cultura
-                    sean parte fundamental del aprendizaje, impulsando
-                    la innovación pedagógica, el liderazgo colaborativo,
-                    la justicia social y el uso significativo de las
-                    tecnologías.
-                </p>
-
-                <a class="volver" href="#inicio">
-                    ↑ Volver al inicio
-                </a>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- INVITACIÓN AL TEST VOCACIONAL -->
-<section class="invitacion">
-
-    <h2>🌈 El siguiente paso comienza contigo</h2>
-
-    <p>
-        Tus intereses pueden abrirte nuevas oportunidades.
-        Dedica unos minutos a explorar tus preferencias y comienza
-        a reflexionar sobre las opciones que tienes para tu futuro.
-    </p>
-
-    <a href="test.html" class="btn btn-dorado">
-        ¡Quiero descubrir mi vocación! →
-    </a>
-
-</section>
-
+    <section class="invitacion">
+        <h2>🌈 El siguiente paso comienza contigo</h2>
+        <p>
+            Tus intereses pueden abrirte nuevas oportunidades.
+            Dedica unos minutos a explorar tus preferencias y comienza
+            a reflexionar sobre las opciones que tienes para tu futuro.
+        </p>
+        <a href="test.html" class="btn btn-dorado">
+            ¡Quiero descubrir mi vocación! →
+        </a>
+    </section>
 </main>
 
-<!-- PIE DE PÁGINA -->
 <footer id="contacto">
-
     <strong>TEBAEV HUEYAPAN DE OCAMPO</strong>
-
     <br>
-
     Sistema web de orientación vocacional
-
     <br>
-
     Explora tus intereses, reconoce tus habilidades y construye tu futuro.
-
     <br><br>
-
     <a href="#inicio" style="color:#ffd447;">
         Volver al inicio ↑
     </a>
-
 </footer>
 
 </body>
